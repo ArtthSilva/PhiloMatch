@@ -1,16 +1,11 @@
-# filo_master
+# PhiloMatch - Encontros Filosóficos para Aprendizado
+ 
 
-A new Flutter project.
+## Visão Geral
 
-## Getting Started
+PhiloMatch é um projeto que combina a familiar interface do Tinder com a profunda sabedoria dos filósofos para criar uma plataforma de aprendizado única. O objetivo é tornar o aprendizado da filosofia mais acessível, envolvente e divertido, conectando estudantes e entusiastas da filosofia com pensadores clássicos e suas ideias.
 
-This project is a starting point for a Flutter application.
+## Funcionalidades Principais
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Deslize para a direita para "match" com um filósofo e receber sugestões de leituras e recursos relacionados.
+- Deslize para a esquerda para explorar uma ampla gama de filósofos e suas contribuições para o mundo da filosofia.
