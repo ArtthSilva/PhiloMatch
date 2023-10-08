@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:filo_master/layers/domain/models/philosopher_model.dart';
 
-class SelectScreen extends StatelessWidget {
-  final PhilosopherModel philosopher;
+class SelectPhilosopherComponent extends StatelessWidget {
+   final PhilosopherModel philosopher;
 
-  const SelectScreen(
+  const SelectPhilosopherComponent(
     this.philosopher, {
     Key? key,
   }) : super(key: key);

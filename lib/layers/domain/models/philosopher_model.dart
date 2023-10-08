@@ -1,13 +1,10 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:flutter/material.dart';
-
 class PhilosopherModel {
   String name;
   int yearBirth;
   int yearDeath;
   String country;
   String image;
-   List<Color> color;
+  bool isFavorite;
 
   PhilosopherModel({
     required this.name,
@@ -15,8 +12,7 @@ class PhilosopherModel {
     required this.yearDeath,
     required this.country,
     required this.image,
-    required this.color,
-    
+    required this.isFavorite
   });
 }
 
@@ -27,7 +23,7 @@ final List<PhilosopherModel> philosopher = [
     yearDeath: 1804,
     country: 'Germany',
     image: 'assets/images/Kant.jpg',
-    color: const [Color(0xFFFF3868), Color(0xFFFFB49A)],
+    isFavorite: false
   ),
   PhilosopherModel(
     name: 'Georg Hegel',
@@ -35,6 +31,42 @@ final List<PhilosopherModel> philosopher = [
     yearDeath: 1831,
     country: 'Germany',
     image: 'assets/images/hegel.jpg',
-     color: const [Color(0xFF736EFE), Color(0xFF62E4EC)],
+    isFavorite: false
+  ),
+
+  PhilosopherModel(
+    name: 'Rousseau',
+    yearBirth: 1712,
+    yearDeath: 1778,
+    country: 'Switzerland',
+    image: 'assets/images/rousseau1.jpg',
+    isFavorite: false
+  ),  
+
+  PhilosopherModel(
+    name: 'Friedrich Nietzsche',
+    yearBirth: 1844,
+    yearDeath: 1900,
+    country: 'Germany',
+    image: 'assets/images/Niet2.jpg',
+    isFavorite: false
+  ),
+
+  PhilosopherModel(
+    name: 'Jean-Paul Sartre',
+    yearBirth: 1905,
+    yearDeath: 1980,
+    country: 'France',
+    image: 'assets/images/sartre5.webp',
+    isFavorite: false
+  ),
+
+  PhilosopherModel(
+    name: 'Jean-Paul Sartre',
+    yearBirth: 1913,
+    yearDeath: 1960,
+    country: 'France',
+    image: 'assets/images/camus6.webp',
+    isFavorite: false
   ),
 ];
