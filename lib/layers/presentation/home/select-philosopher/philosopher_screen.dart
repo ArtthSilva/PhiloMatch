@@ -1,10 +1,12 @@
 import 'dart:developer';
+import 'dart:ui';
 
 import 'package:filo_master/layers/domain/models/philosopher_model.dart';
 import 'package:filo_master/layers/presentation/favorites_philosophers/favorites_philo_screen.dart';
 import 'package:filo_master/layers/presentation/home/select-philosopher/select_philosopher_component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class PhilosopherScreen extends StatefulWidget {
   const PhilosopherScreen({
@@ -19,7 +21,7 @@ class _PhilosopherScreenPageState extends State<PhilosopherScreen> {
   final CardSwiperController controller = CardSwiperController();
 
   final cards = philosopher.map(SelectPhilosopherComponent.new).toList();
-   List<PhilosopherModel> favorites = [];
+  List<PhilosopherModel> favorites = [];
   int currentCardIndex = 0;
 
   @override
@@ -40,14 +42,41 @@ class _PhilosopherScreenPageState extends State<PhilosopherScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        toolbarHeight: 60,
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        title: Text('FiloMatch', style: GoogleFonts.openSans()),
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(22),
+                  bottomRight: Radius.circular(22)),
+              gradient: LinearGradient(colors: [
+                               
+                Colors.blue,
+                Colors.deepPurpleAccent,
+                Colors.redAccent,
+
+              ], begin: Alignment.topLeft, end: Alignment.bottomRight),),
+        ),
+      ),
       body: SafeArea(
         child: Column(
           children: [
             Flexible(
               child: CardSwiper(
+                  initialIndex: 0,
                   controller: controller,
                   cardsCount: cards.length,
-                  onSwipe: _onSwipe,
+                  isLoop: true,
+                  onSwipe: (previousIndex, currentIndex, direction) {
+                    setState(() {
+                      currentCardIndex = currentIndex!;
+                    });
+                    return true;
+                  },
                   onUndo: _onUndo,
                   numberOfCardsDisplayed: cards.length,
                   backCardOffset: const Offset(40, 41),
@@ -59,7 +88,8 @@ class _PhilosopherScreenPageState extends State<PhilosopherScreen> {
                     horizontalThresholdPercentage,
                     verticalThresholdPercentage,
                   ) {
-                    currentCardIndex = index;
+                    log('current att ${currentCardIndex}');
+                    log(' index ${index}');
                     return cards[index];
                   }),
             ),
@@ -69,17 +99,20 @@ class _PhilosopherScreenPageState extends State<PhilosopherScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   FloatingActionButton(
+                    heroTag: 'voltar',
                     onPressed: controller.undo,
                     backgroundColor: Colors.white,
                     child:
                         const Icon(Icons.rotate_left, color: Color(0xFFFDD835)),
                   ),
                   FloatingActionButton(
+                    heroTag: 'recusar',
                     onPressed: controller.swipeLeft,
                     backgroundColor: Colors.white,
                     child: const Icon(Icons.close_outlined, color: Colors.red),
                   ),
                   FloatingActionButton(
+                    heroTag: 'adicionar_favoritos',
                     onPressed: () {
                       setState(() {
                         final currentPhilosopher =
@@ -89,7 +122,7 @@ class _PhilosopherScreenPageState extends State<PhilosopherScreen> {
 
                         if (currentPhilosopher.isFavorite) {
                           favorites.add(currentPhilosopher);
-                          log('o ${currentPhilosopher} foi add ao $favorites');
+                          log('o ${currentPhilosopher.name} foi add ao $favorites');
                         } else {
                           favorites.remove(currentPhilosopher);
                         }
@@ -103,7 +136,8 @@ class _PhilosopherScreenPageState extends State<PhilosopherScreen> {
                     ),
                   ),
                   FloatingActionButton(
-                      heroTag: 'favs', onPressed: () => favpage(favorites))
+                      heroTag: 'ir_para_favoritos',
+                      onPressed: () => favpage(favorites))
                 ],
               ),
             ),
