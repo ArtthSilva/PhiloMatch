@@ -62,11 +62,11 @@ final List<PhilosopherModel> philosopher = [
   ),
 
   PhilosopherModel(
-    name: 'Jean-Paul Sartre',
+    name: 'Camus',
     yearBirth: 1913,
     yearDeath: 1960,
     country: 'France',
-    image: 'assets/images/camus6.webp',
+    image: 'assets/images/camus9.jpg',
     isFavorite: false
-  ),
+  )
 ];

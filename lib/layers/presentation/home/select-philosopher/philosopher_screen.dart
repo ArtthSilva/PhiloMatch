@@ -43,23 +43,36 @@ class _PhilosopherScreenPageState extends State<PhilosopherScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () => favpage(favorites),
+          icon: const Icon(
+            Icons.person_sharp,
+          ),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () => favpage(favorites),
+            icon: const Icon(
+              Icons.favorite_border,
+            ),
+          ),
+        ],
         centerTitle: true,
         toolbarHeight: 60,
         elevation: 0,
         backgroundColor: Colors.transparent,
         title: Text('FiloMatch', style: GoogleFonts.openSans()),
         flexibleSpace: Container(
-          decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(22),
-                  bottomRight: Radius.circular(22)),
-              gradient: LinearGradient(colors: [
-                               
-                Colors.blue,
-                Colors.deepPurpleAccent,
-                Colors.redAccent,
-
-              ], begin: Alignment.topLeft, end: Alignment.bottomRight),),
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(22),
+                bottomRight: Radius.circular(22)),
+            gradient: LinearGradient(colors: [
+              Colors.blue[800]!,
+              Colors.deepPurple,
+              Colors.red[800]!,
+            ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+          ),
         ),
       ),
       body: SafeArea(
@@ -134,10 +147,7 @@ class _PhilosopherScreenPageState extends State<PhilosopherScreen> {
                       Icons.favorite,
                       color: Colors.lightBlueAccent,
                     ),
-                  ),
-                  FloatingActionButton(
-                      heroTag: 'ir_para_favoritos',
-                      onPressed: () => favpage(favorites))
+                  )
                 ],
               ),
             ),

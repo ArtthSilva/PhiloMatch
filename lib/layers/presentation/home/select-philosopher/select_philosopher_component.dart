@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:filo_master/layers/domain/models/philosopher_model.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 
 class SelectPhilosopherComponent extends StatelessWidget {
-   final PhilosopherModel philosopher;
+  final PhilosopherModel philosopher;
 
   const SelectPhilosopherComponent(
     this.philosopher, {
@@ -12,9 +14,12 @@ class SelectPhilosopherComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: MediaQuery.sizeOf(context).width * 0.801,
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
-        borderRadius: const BorderRadius.all(Radius.circular(10)),
+        borderRadius: const BorderRadius.all(
+          Radius.circular(20),
+        ),
         color: Colors.white,
         boxShadow: [
           BoxShadow(
@@ -29,11 +34,13 @@ class SelectPhilosopherComponent extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Flexible(
-            child: Image.asset(philosopher.image),
+          Image.asset(
+            philosopher.image,
+            fit: BoxFit.fill,
           ),
           Padding(
-            padding: const EdgeInsets.only(top:16,left: 16,right: 16),
+            padding:
+                const EdgeInsets.only(top: 16, left: 16, right: 1, bottom: 3),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -41,11 +48,9 @@ class SelectPhilosopherComponent extends StatelessWidget {
                   children: [
                     Text(
                       philosopher.name,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      ),
+                      style:   
+                      GoogleFonts.robotoSlab(fontSize: 20, fontWeight: FontWeight.bold),                    
+                      
                     ),
                     const Text(
                       ', ',
@@ -67,7 +72,7 @@ class SelectPhilosopherComponent extends StatelessWidget {
                               fontSize: 18,
                             ),
                           ),
-                          const Text(' - '), 
+                          const Text(' - '),
                           Text(
                             philosopher.yearDeath.toString(),
                             style: const TextStyle(
