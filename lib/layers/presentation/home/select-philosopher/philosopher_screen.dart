@@ -1,6 +1,4 @@
 import 'dart:developer';
-import 'dart:ui';
-
 import 'package:filo_master/layers/domain/models/philosopher_model.dart';
 import 'package:filo_master/layers/presentation/favorites_philosophers/favorites_philo_screen.dart';
 import 'package:filo_master/layers/presentation/home/select-philosopher/select_philosopher_component.dart';
@@ -101,8 +99,8 @@ class _PhilosopherScreenPageState extends State<PhilosopherScreen> {
                     horizontalThresholdPercentage,
                     verticalThresholdPercentage,
                   ) {
-                    log('current att ${currentCardIndex}');
-                    log(' index ${index}');
+                    log('current att $currentCardIndex');
+                    log(' index $index');
                     return cards[index];
                   }),
             ),
@@ -111,20 +109,21 @@ class _PhilosopherScreenPageState extends State<PhilosopherScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  FloatingActionButton(
-                    heroTag: 'voltar',
-                    onPressed: controller.undo,
-                    backgroundColor: Colors.white,
-                    child:
-                        const Icon(Icons.rotate_left, color: Color(0xFFFDD835)),
-                  ),
+                  // FloatingActionButton(
+                  //   heroTag: 'voltar',
+                  //   onPressed: controller.undo,
+                  //   backgroundColor: Colors.white,
+                  //   child:
+                  //       const Icon(Icons.rotate_left, color: Color(0xFFFDD835)),
+                  // ),
                   FloatingActionButton(
                     heroTag: 'recusar',
                     onPressed: controller.swipeLeft,
-                    backgroundColor: Colors.white,
-                    child: const Icon(Icons.close_outlined, color: Colors.red),
+                    backgroundColor: Colors.red,                
+                    child: const Icon(Icons.close_outlined, color: Colors.white),
                   ),
                   FloatingActionButton(
+                    
                     heroTag: 'adicionar_favoritos',
                     onPressed: () {
                       setState(() {
@@ -142,10 +141,10 @@ class _PhilosopherScreenPageState extends State<PhilosopherScreen> {
                       });
                       controller.swipeRight();
                     },
-                    backgroundColor: Colors.white,
+                    backgroundColor: Colors.lightBlue,
                     child: const Icon(
                       Icons.favorite,
-                      color: Colors.lightBlueAccent,
+                      color: Colors.white,
                     ),
                   )
                 ],
@@ -157,16 +156,16 @@ class _PhilosopherScreenPageState extends State<PhilosopherScreen> {
     );
   }
 
-  bool _onSwipe(
-    int previousIndex,
-    int? currentIndex,
-    CardSwiperDirection direction,
-  ) {
-    debugPrint(
-      'O cartão $previousIndex foi passado para ${direction.name}. Agora o cartão $currentIndex está no topo',
-    );
-    return true;
-  }
+  // bool _onSwipe(
+  //   int previousIndex,
+  //   int? currentIndex,
+  //   CardSwiperDirection direction,
+  // ) {
+  //   debugPrint(
+  //     'O cartão $previousIndex foi passado para ${direction.name}. Agora o cartão $currentIndex está no topo',
+  //   );
+  //   return true;
+  // }
 
   bool _onUndo(
     int? previousIndex,
